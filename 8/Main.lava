@@ -1,0 +1,20 @@
+public class Main {
+    public static void main(String[] args) throws Exception {
+
+        DataManager manager = new DataManager();
+
+        //Создаём объект с обработчиками и регистрируем его
+        manager.registerDataProcessor(new DataProcessors());
+        System.out.println();
+
+        manager.loadData("input.txt");
+        System.out.println();
+
+        //Запускаем обработку (многопоточно, через аннотации и Stream API)
+        manager.processData();
+        System.out.println();
+
+        manager.saveData("output.txt");
+        System.out.println("\nГотово!");
+    }
+}
